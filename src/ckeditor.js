@@ -16,6 +16,7 @@ import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
 import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
 import EasyImage from '@ckeditor/ckeditor5-easy-image/src/easyimage';
 import Heading from '@ckeditor/ckeditor5-heading/src/heading';
+import Title from '@ckeditor/ckeditor5-heading/src/title';
 import Image from '@ckeditor/ckeditor5-image/src/image';
 import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
 import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
@@ -30,6 +31,9 @@ import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefrom
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
+import HeadingButtonsUI from '@ckeditor/ckeditor5-heading/src/headingbuttonsui';
+import ParagraphButtonUI from '@ckeditor/ckeditor5-paragraph/src/paragraphbuttonui';
+import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight';
 
 import '../theme/theme.css';
 
@@ -60,33 +64,28 @@ BalloonEditor.builtinPlugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	TextTransformation
+	TextTransformation,
+	ParagraphButtonUI,
+	HeadingButtonsUI,
+	Highlight,
+	Title
 ];
 
 // Editor configuration.
 BalloonEditor.defaultConfig = {
 	blockToolbar: [
-		'heading',
+		'paragraph', 'heading1', 'heading2', 'heading3',
 		'|',
-		'bulletedList',
-		'numberedList',
+		'bulletedList', 'numberedList',
 		'|',
-		'indent',
-		'outdent',
-		'|',
-		'imageUpload',
-		'blockQuote',
-		'insertTable',
-		'mediaEmbed',
-		'|',
-		'undo',
-		'redo'
+		'blockQuote', 'imageUpload'
 	],
 	toolbar: {
 		items: [
 			'bold',
 			'italic',
-			'link'
+			'link',
+			'highlight'
 		]
 	},
 	image: {
@@ -104,6 +103,10 @@ BalloonEditor.defaultConfig = {
 			'mergeTableCells'
 		]
 	},
+	title: {
+		placeholder: 'My custom placeholder for the title'
+	},
+	placeholder: 'My custom placeholder for the body',
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en'
 };
